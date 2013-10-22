@@ -8,12 +8,14 @@ import android.app.Activity;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.widget.ListView;
 
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
 public class TimeLineActivity extends Activity {
-	TweetsAdapter tweetsAdapter = new TweetsAdapter(this, null);
+	TweetsAdapter tweetsAdapter = null;
+	ListView lvTweets;
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -23,7 +25,9 @@ public class TimeLineActivity extends Activity {
 			@Override
 			public void onSuccess(JSONArray jsonTweets) {
 				ArrayList<Tweet> tweets = Tweet.fromJson(jsonTweets);
-				tweetsAdapter.addAll(tweets);
+				tweetsAdapter = new TweetsAdapter(getBaseContext(), tweets);
+				lvTweets = (ListView) findViewById(R.id.lvTweets);
+				lvTweets.setAdapter(tweetsAdapter);
 			}
 		});
 	}
