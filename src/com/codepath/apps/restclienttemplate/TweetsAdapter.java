@@ -38,7 +38,7 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 		userName.setText(tweet_item.getUser().getSreenName());
 		tweetBody.setText(tweet_item.getBody());
 		
-		return null;
+		return tweetView;
 	}
 	
 }
