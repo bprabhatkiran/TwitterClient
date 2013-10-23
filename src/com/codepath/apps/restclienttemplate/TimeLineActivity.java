@@ -88,14 +88,13 @@ public class TimeLineActivity extends Activity {
 		if(tweetsAdapter != null) {
 			tweetsAdapter.clear();
 		}
-		displayTweets(20);
+		displayTweets(25);
 	}
 
 	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
 		if (requestCode == 0) {
-			if (resultCode == RESULT_OK) {
-				displayTweets();
-			}
+			// Kind of a hack, as I am not checking the result code
+			displayTweets();
 		}
 	}
 }

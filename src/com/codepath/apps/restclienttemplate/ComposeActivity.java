@@ -30,15 +30,16 @@ public class ComposeActivity extends Activity {
 	}
 	
 	public boolean postTweet(View view) {
+		finish();
 		RestClientApp.getRestClient().postTweet(bodyTweet.getText().toString(), new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(int arg, JSONArray objects) {
-				finish();
+				// Parse anything here if you want
 			}
 			
 			@Override
 			public void onFailure(Throwable arg0, JSONObject arg1) {
-				finish();
+				// Display an error log
 			}
 		});
 		return true;
