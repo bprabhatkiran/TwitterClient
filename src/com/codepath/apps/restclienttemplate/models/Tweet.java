@@ -17,7 +17,7 @@ public class Tweet extends BaseModel {
 		return getString("text");
 	}
 	
-	public long getId() {
+	public Long getId() {
 		return getLong("id");
 	}
 	
@@ -51,9 +51,4 @@ public class Tweet extends BaseModel {
 		}
 		return result;
 	}
-	
-	public Tweet() {
-		// TODO Auto-generated constructor stub
-	}
-
 }
