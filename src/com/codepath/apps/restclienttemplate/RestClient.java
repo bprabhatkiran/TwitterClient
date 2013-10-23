@@ -33,8 +33,17 @@ public class RestClient extends OAuthBaseClient {
     }
     
     // Wrapper around statuses endpoint
-    public void getStatuses(AsyncHttpResponseHandler handler) {
+    public void getStatuses(int count, AsyncHttpResponseHandler handler) {
         String apiUrl = getApiUrl("statuses/home_timeline.json");
-        client.get(apiUrl, handler);
+        RequestParams params = new RequestParams();
+        params.put("count", Integer.toString(count));
+        client.get(apiUrl, params, handler);
+    }
+    
+    public void postTweet(String statusUpdate, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/update.json");
+        RequestParams params = new RequestParams();
+        params.put("status", statusUpdate);
+        client.post(apiUrl, params, handler);
     }
 }

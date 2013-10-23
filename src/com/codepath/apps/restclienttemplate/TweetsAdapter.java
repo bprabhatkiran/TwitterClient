@@ -1,5 +1,6 @@
 package com.codepath.apps.restclienttemplate;
 
+import java.util.Collection;
 import java.util.List;
 
 import android.content.Context;
@@ -44,6 +45,12 @@ public class TweetsAdapter extends ArrayAdapter<Tweet> {
 		tweetBody.setText(tweet_item.getBody());
 		
 		return tweetView;
+	}
+	
+	@Override
+	public void addAll(Collection<? extends Tweet> collection) {
+		super.addAll(collection);
+		// Persist the data to the sqlite database
 	}
 	
 }
