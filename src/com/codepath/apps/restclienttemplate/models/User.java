@@ -28,8 +28,16 @@ public class User extends BaseModel {
 		return getInt("statuses_count");
 	}
 	
-	public User() {
-		// TODO Auto-generated constructor stub
+	public int getFollowersCount() {
+		return getInt("followers_count");
+	}
+	
+	public int getFriendsCount() {
+		return getInt("friends_count");
+	}
+	
+	public String getDescription() {
+		return getString("description");
 	}
 	
 	public static User fromJson(JSONObject jsonObject) {

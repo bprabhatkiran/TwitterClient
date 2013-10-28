@@ -8,6 +8,8 @@
     <string name="login_label">Log in</string>
     <string name="title_activity_time_line">TimeLineActivity</string>
     <string name="composeTitle">Compose</string>
+    <string name="openProfile">Open Profile</string>
     <string name="title_activity_compose">ComposeActivity</string>
+    <string name="title_activity_profile">ProfileActivity</string>
 
 </resources>

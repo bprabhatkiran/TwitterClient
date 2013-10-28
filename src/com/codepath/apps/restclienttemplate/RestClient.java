@@ -47,6 +47,18 @@ public class RestClient extends OAuthBaseClient {
         client.get(apiUrl, params, handler);
     }
     
+    public void getAccountCredentials(AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("account/verify_credentials.json");
+        client.get(apiUrl, null, handler);
+    }
+    
+    public void getUserTimeline(int count, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/user_timeline.json");
+        RequestParams params = new RequestParams();
+        params.put("count", Integer.toString(count));
+        client.get(apiUrl, params, handler);
+    }
+    
     public void postTweet(String statusUpdate, AsyncHttpResponseHandler handler) {
         String apiUrl = getApiUrl("statuses/update.json");
         RequestParams params = new RequestParams();
