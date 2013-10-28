@@ -40,6 +40,13 @@ public class RestClient extends OAuthBaseClient {
         client.get(apiUrl, params, handler);
     }
     
+    public void getMentions(int count, AsyncHttpResponseHandler handler) {
+        String apiUrl = getApiUrl("statuses/mentions_timeline.json");
+        RequestParams params = new RequestParams();
+        params.put("count", Integer.toString(count));
+        client.get(apiUrl, params, handler);
+    }
+    
     public void postTweet(String statusUpdate, AsyncHttpResponseHandler handler) {
         String apiUrl = getApiUrl("statuses/update.json");
         RequestParams params = new RequestParams();

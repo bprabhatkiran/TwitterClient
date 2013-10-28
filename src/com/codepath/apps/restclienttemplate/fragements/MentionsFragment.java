@@ -11,10 +11,10 @@ import com.codepath.apps.restclienttemplate.TweetsAdapter;
 import com.codepath.apps.restclienttemplate.models.Tweet;
 import com.loopj.android.http.JsonHttpResponseHandler;
 
-public class HomeTimelineFragment extends TweetsListFragment {
+public class MentionsFragment extends TweetsListFragment {
 	@Override
 	public void displayTweets(int count) {
-		RestClientApp.getRestClient().getStatuses(count, new JsonHttpResponseHandler() {
+		RestClientApp.getRestClient().getMentions(count, new JsonHttpResponseHandler() {
 			@Override
 			public void onSuccess(JSONArray jsonTweets) {
 				ArrayList<Tweet> tweets = Tweet.fromJson(jsonTweets);
@@ -32,5 +32,4 @@ public class HomeTimelineFragment extends TweetsListFragment {
 			}
 		});
 	}
-
 }
