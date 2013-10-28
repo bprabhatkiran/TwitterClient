@@ -4,9 +4,9 @@ import java.util.ArrayList;
 
 import org.json.JSONArray;
 
-import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -18,7 +18,7 @@ import com.loopj.android.http.JsonHttpResponseHandler;
 import eu.erikw.PullToRefreshListView;
 import eu.erikw.PullToRefreshListView.OnRefreshListener;
 
-public class TimeLineActivity extends Activity {
+public class TimeLineActivity extends FragmentActivity {
 	TweetsAdapter tweetsAdapter = null;
 	PullToRefreshListView lvTweets = null;
 
