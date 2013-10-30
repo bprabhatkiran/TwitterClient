@@ -53,8 +53,16 @@ public class RestClient extends OAuthBaseClient {
     }
     
     public void getUserTimeline(int count, AsyncHttpResponseHandler handler) {
+    	String apiUrl = getApiUrl("statuses/user_timeline.json");
+        RequestParams params = new RequestParams();
+        params.put("count", Integer.toString(count));
+        client.get(apiUrl, params, handler);
+    }
+    
+    public void getUserTimeline(long userID, int count, AsyncHttpResponseHandler handler) {
         String apiUrl = getApiUrl("statuses/user_timeline.json");
         RequestParams params = new RequestParams();
+        params.put("user_id", Long.toString(userID));
         params.put("count", Integer.toString(count));
         client.get(apiUrl, params, handler);
     }

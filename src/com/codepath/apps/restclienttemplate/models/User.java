@@ -1,8 +1,10 @@
 package com.codepath.apps.restclienttemplate.models;
 
+import java.io.Serializable;
+
 import org.json.JSONObject;
 
-public class User extends BaseModel {
+public class User extends BaseModel implements Serializable {
 	
 	public String getName() {
 		return getString("name");
