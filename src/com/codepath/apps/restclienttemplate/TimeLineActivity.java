@@ -14,6 +14,10 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 public class TimeLineActivity extends FragmentActivity implements TabListener {
+	
+	Tab homeTab;
+	Tab mentionsTab;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -26,8 +30,8 @@ public class TimeLineActivity extends FragmentActivity implements TabListener {
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		actionBar.setDisplayShowTitleEnabled(true);
 		
-		Tab homeTab = actionBar.newTab().setTag("HomeTimelineFragment").setText("Home").setIcon(R.drawable.ic_home).setTabListener(this);
-		Tab mentionsTab = actionBar.newTab().setTag("MentionsFragment").setText("Mentions").setIcon(R.drawable.ic_mentions).setTabListener(this);
+		homeTab = actionBar.newTab().setTag("HomeTimelineFragment").setText("Home").setIcon(R.drawable.ic_home).setTabListener(this);
+		mentionsTab = actionBar.newTab().setTag("MentionsFragment").setText("Mentions").setIcon(R.drawable.ic_mentions).setTabListener(this);
 		
 		actionBar.addTab(homeTab);
 		actionBar.addTab(mentionsTab);
@@ -75,10 +79,9 @@ public class TimeLineActivity extends FragmentActivity implements TabListener {
 		
 	}
 	
-//	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-//		if (requestCode == 0) {
-//			// Kind of a hack, as I am not checking the result code
-//			displayTweets();
-//		}
-//	}
+	protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+		if (requestCode == 0) {
+			getActionBar().selectTab(mentionsTab);
+		}
+	}
 }
