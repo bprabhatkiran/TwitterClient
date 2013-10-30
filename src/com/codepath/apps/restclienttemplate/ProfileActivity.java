@@ -23,8 +23,7 @@ public class ProfileActivity extends FragmentActivity {
 		FragmentManager manager = getSupportFragmentManager();
         UserTimelineFragment fragment = (UserTimelineFragment) manager.findFragmentById(R.id.fragment1);
 
-		Bundle extras = getIntent().getExtras();
-		User user = (User) extras.getSerializable("user");
+		User user = (User) getIntent().getSerializableExtra("user");
 
 		if(user != null) {
 	        fragment.user = user;
