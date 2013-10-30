@@ -4,50 +4,70 @@ import java.io.Serializable;
 
 import org.json.JSONObject;
 
-public class User extends BaseModel implements Serializable {
-	
+@SuppressWarnings("serial")
+public class User implements Serializable {
+    private String name;
+    private long userId;
+    private String screenName;
+    private String profileImageUrl;
+    private String profileBackgroundImageUrl;
+    private int numTweets;
+    private int followersCount;
+    private int friendsCount;
+    private String description;
+    
 	public String getName() {
-		return getString("name");
+		return name;
 	}
 	
 	public long getID() {
-		return getLong("id");
+		return userId;
 	}
 	
 	public String getSreenName() {
-		return getString("screen_name");
+		return screenName;
 	}
 	
 	public String getProfileImageURL() {
-		return getString("profile_image_url");
+		return profileImageUrl;
 	}
 	
 	public String getProfileBackgroundImageURL() {
-		return getString("profile_background_image_url");
+		return profileBackgroundImageUrl;
 	}
 	
 	public int getNumTweets() {
-		return getInt("statuses_count");
+		return numTweets;
 	}
 	
 	public int getFollowersCount() {
-		return getInt("followers_count");
+		return followersCount;
 	}
 	
 	public int getFriendsCount() {
-		return getInt("friends_count");
+		return friendsCount;
 	}
 	
 	public String getDescription() {
-		return getString("description");
+		return description;
 	}
 	
-	public static User fromJson(JSONObject jsonObject) {
-		User newUser = new User();
-		
-		newUser.jsonObject = jsonObject;
-		
-		return newUser;
+	public static User fromJson(JSONObject json) {
+        User u = new User();
+        try {
+                u.userId = json.getLong("id");
+                u.name = json.getString("name");
+                u.screenName = json.getString("screen_name");
+                u.profileImageUrl = json.getString("profile_image_url");
+                u.profileBackgroundImageUrl = json.getString("profile_background_image_url");
+                u.numTweets = json.getInt("statuses_count");
+                u.followersCount = json.getInt("followers_count");
+                u.friendsCount = json.getInt("friends_count");
+                u.description = json.getString("description");
+        } catch (Exception e) {
+                e.printStackTrace();
+                return null;
+        }
+        return u;
 	}
-
 }
